@@ -1,0 +1,14 @@
+
+# LAST QUIZ
+# read file
+data <- read.csv("C:/Users/lloyd/Documents/GitHub/rproject/rproject/deaths.csv")
+
+
+model <- lm(Stroke_Death_Rate_Per_100000 ~ dm_prev_adj + home_val + female_hd, data=data)
+summary(model)
+
+
+
+new_data <- data.frame(dm_prev_adj=7.4, home_val=85.5, female_hd=23.9)
+prediction <- predict(model, newdata=new_data)
+print(prediction)

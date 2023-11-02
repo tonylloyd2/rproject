@@ -1,0 +1,8 @@
+
+# import data csv
+data <- read.csv("C:\\Users\\lloyd\\Documents\\GitHub\\rproject\\rproject\\deaths.csv")
+
+
+```{r cars}
+summary(cars)
+```

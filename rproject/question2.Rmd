@@ -1,0 +1,31 @@
+
+
+```{r setup, include=FALSE}
+# This chunk sets up global options for all code chunks.
+knitr::opts_chunk$set(echo = TRUE, results = 'output')
+```
+
+# QUIZ2: Regression Models 
+# SLR MODEL
+``` {r }
+# Read data
+data <- read.csv("C:/Users/lloyd/Documents/GitHub/rproject/rproject/deaths.csv")
+```
+
+```{r }
+# Model 1
+model1 <- lm(Stroke_Death_Rate_Per_100000 ~ dm_prev_adj, data=data)
+summary(model1)
+```
+
+# Model 2 (MLR):
+```{R}
+model2 <- lm(Stroke_Death_Rate_Per_100000 ~ dm_prev_adj + no_hsdip + ob_prev_adj, data=data)
+summary(model2)
+```
+
+```{r }
+# comparison on models
+library(car)
+vif(model2)
+```

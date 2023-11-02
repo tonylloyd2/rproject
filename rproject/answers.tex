@@ -1,0 +1,126 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\hypertarget{question-descriptive-statistics}{%
+\section{Question Descriptive
+Statistics}\label{question-descriptive-statistics}}
+
+\hypertarget{import-data-csv}{%
+\section{import data csv}\label{import-data-csv}}
+
+data \textless-
+read.csv(``C:\Users\lloyd\Documents\GitHub\rproject\rproject\deaths.csv'')
+
+\hypertarget{five-number-summary}{%
+\section{Five-number summary}\label{five-number-summary}}
+
+summary(data\(dm_prev_adj) summary(data\)Stroke\_Death\_Rate\_Per\_100000)
+
+\hypertarget{histograms}{%
+\section{Histograms}\label{histograms}}
+
+hist(data\(dm_prev_adj, main="Histogram of Diagnosed Diabetes Percentage", xlab="Diagnosed Diabetes Percentage") hist(data\)Stroke\_Death\_Rate\_Per\_100000,
+main=``Histogram of Stroke Death Rate per 100,000'', xlab=``Stroke Death
+Rate per 100,000'')
+
+\hypertarget{scatter}{%
+\section{Scatter}\label{scatter}}
+
+plot(data\(dm_prev_adj, data\)Stroke\_Death\_Rate\_Per\_100000,
+main=``Scatterplot of Stroke Death Rate vs Diagnosed Diabetes
+Percentage'', xlab=``Diagnosed Diabetes Percentage'', ylab=``Stroke
+Death Rate per 100,000'')
+
+\hypertarget{selecting-numeric-variables}{%
+\section{Selecting numeric
+variables}\label{selecting-numeric-variables}}
+
+numeric\_data \textless- data{[}, sapply(data, is.numeric){]}
+
+\hypertarget{correlation-matrix}{%
+\section{Correlation matrix}\label{correlation-matrix}}
+
+cor\_matrix \textless- cor(numeric\_data)
+
+\hypertarget{correlation-of-all-variables-with-stroke_death_rate_per_100000}{%
+\section{Correlation of all variables with
+Stroke\_Death\_Rate\_Per\_100000}\label{correlation-of-all-variables-with-stroke_death_rate_per_100000}}
+
+cor\_matrix{[}``Stroke\_Death\_Rate\_Per\_100000'',{]}
+
+\hypertarget{to-identify-multicollinearity}{%
+\section{To identify
+multicollinearity}\label{to-identify-multicollinearity}}
+
+eigenvalues \textless- eigen(cor\_matrix)\$values if(any(eigenvalues
+\textless{} 0.01))\{ print(``Possible multicollinearity detected'') \}
+
+\end{document}
